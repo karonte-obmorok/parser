@@ -18,7 +18,7 @@ def get_content(html):
     plays = []
     for item in items:
         plays.append({
-            item.find('a', 'member-link').get_text(strip=True): item.find('td', 'price').get_text()
+            item.find('a', 'member-link').get_text(strip=True): item.find('td', 'price').get_text(strip=True)
         })  # ! ВОТ Я ВЫТАЩИЛ ХОЗЯЕВ И КЭФ НА НИХ В СТРОКЕ-21
 
     for game in plays:
