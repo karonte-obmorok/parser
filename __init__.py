@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from lxml.html import fromstring
 from requests import get
-from bs4 import BeautifulSoup
 
 
 URL = 'https://www.marathonbet.com/su/popular/Football'
