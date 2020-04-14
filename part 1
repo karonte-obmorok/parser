@@ -13,12 +13,13 @@ def get_html(url, params=None):
 
 def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
-    items = soup.find_all('a', class_='member-link') #!!! ВОТ ЗДЕСЬ ЧТО-ТО НЕ ТАК
+    items = soup.find_all('div', class_='bg coupon-row') # !!! ВОТ КАТАЛОГ ИГР
 
-    cars = []
+    plays = []
     for item in items:
-        cars.append({'title': item.find('div', class_='member-name  nowrap').get_text()}) #!!! И ЗДЕСЬ ТОЖЕ
-    print(cars)
+        plays.append({
+            # !!! А ТУТ ДОЛЖНО БЫТЬ ТО ЧТО Я ИЩУ ИЗ КАТАЛОГА ИГР (КОМАНДЫ,ПОБЕДА1,НИЧЬЯ,ПОБЕДА2) и все
+        })
 
 def parse():
     html = get_html(URL)
