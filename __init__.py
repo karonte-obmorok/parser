@@ -12,7 +12,7 @@ page = get(URL, headers=HEADERS)
 
 if page.status_code.__eq__(200):
   html = fromstring(page.text)
-  events = [event.text_content().replace('\n', '') for event in html.xpath(games)]
+  events = [event.text_content().replace('\n', '').replace('  ', '') for event in html.xpath(games)]
   print(events)
 else:
   print('Error')
