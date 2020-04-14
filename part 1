@@ -1,2 +1,30 @@
-# тут должен быть парсер с сайта marathonbet.com
-# хз где найти API 
+import requests
+from bs4 import BeautifulSoup
+
+URL = 'https://www.marathonbet.com/su/popular/Football'
+HEADERS = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36',
+    'accept' : '*/*'
+}
+
+def get_html(url, params=None):
+    r = requests.get(url, headers=HEADERS, params=params)
+    return r
+
+def get_content(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    items = soup.find_all('a', class_='member-link') #!!! ВОТ ЗДЕСЬ ЧТО-ТО НЕ ТАК
+
+    cars = []
+    for item in items:
+        cars.append({'title': item.find('div', class_='member-name  nowrap').get_text()}) #!!! И ЗДЕСЬ ТОЖЕ
+    print(cars)
+
+def parse():
+    html = get_html(URL)
+    if html.status_code == 200:
+        get_content(html.text)
+    else:
+        print('Error')
+
+parse()
