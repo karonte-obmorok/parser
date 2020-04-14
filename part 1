@@ -19,7 +19,7 @@ def get_content(html):
     for item in items:
         plays.append({
             item.find('a', 'member-link').get_text(strip=True): item.find('td', 'price').get_text()
-        })  # ВОТ Я ВЫТАЩИЛ ХОЗЯЕВ И КЭФ НА НИХ
+        })  # ! ВОТ Я ВЫТАЩИЛ ХОЗЯЕВ И КЭФ НА НИХ В СТРОКЕ-21
 
     for game in plays:
         print(game)
